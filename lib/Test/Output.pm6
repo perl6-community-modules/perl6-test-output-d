@@ -19,21 +19,22 @@ my class IO::Capture::Single is IO::Handle {
         self.encoding: 'utf8'; # set up encoder/decoder 
     }
 
-#   method print-nl { self.print($.nl-out); }
-#   method print (*@what) {
-#                   $.bag.all-contents.push: @what.join: '';
-#       $!is-err ?? $.bag.err-contents.push: @what.join: ''
-#                !! $.bag.out-contents.push: @what.join: '';
-#        True;
-#   }
-
-    method WRITE( IO::Handle:D: Blob:D \data --> Bool:D ) {
-        my $str = data.decode();
-        $.bag.all-contents.push: $str;
-        $!is-err ?? $.bag.err-contents.push: $str
-                 !! $.bag.out-contents.push: $str;
-        True;
+    method print-nl { self.print($.nl-out); }
+    method print (*@what) {
+                  $.bag.all-contents.push: @what.join: '';
+      $!is-err ?? $.bag.err-contents.push: @what.join: ''
+               !! $.bag.out-contents.push: @what.join: '';
+       True;
     }
+
+    # This works with post-2019.03, but it's 6.d exclusive. 
+    # method WRITE( IO::Handle:D: Blob:D \data --> Bool:D ) {
+    #     my $str = data.decode();
+    #     $.bag.all-contents.push: $str;
+    #     $!is-err ?? $.bag.err-contents.push: $str
+    #              !! $.bag.out-contents.push: $str;
+    #     True;
+    # }
 
 }
 

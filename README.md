@@ -59,15 +59,14 @@ Test::Output - Test the output to STDOUT and STDERR your program generates
 # DESCRIPTION
 
 This module allows you to capture the output (STDOUT/STDERR/BOTH) of a
-piece of code and evaluate it for some criteria. It needs version 6.d
-of the language, since it's following specs that were deployed for
-that version. If you need to go with 6.c, download 1.001001
-from
-[here](https://github.com/perl6-community-modules/perl6-Test-Output/releases) or
-via  `git clone`+
+piece of code and evaluate it for some criteria. 
 
-    git checkout v1.001001
-    zef install .
+
+**Note**: It's temporarily affected
+by [this bug](https://github.com/rakudo/rakudo/issues/2751), which
+means it's not going to work with post-2019.03 releases. Please keep
+to 2019.03 or previous releases if you are going to use it until that
+bug is solved.
 
 # EXPORTED SUBROUTINES
 
